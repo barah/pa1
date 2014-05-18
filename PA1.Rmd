@@ -1,0 +1,84 @@
+Peer Assessment 1
+========================================================
+
+read data
+```{r}
+rawdata <- read.csv("activity/activity.csv")
+```
+
+caculate daily mean :
+
+```{r}
+data<-ddply(rawdata,~date,summarise,mean=mean(steps),sd=sd(steps),tot=sum(steps),median=median(steps))
+```
+
+plot histogram of the  total number of steps taken each day and print the data:
+
+```{r}
+qplot(tot, data=data, geom="histogram")
+dev.copy(png,"figures/plot1.png")
+dev.off()
+data
+```
+
+average daily activity pattern plot :
+
+```{r}
+xyplot(interval ~steps ,data=rawdata,type="l")
+dev.copy(png,"figures/plot2.png")
+dev.off()
+```
+
+calucate the number of missing values :
+
+```{r}
+MissingValues = NROW(rawdata) - NROW(na.omit(rawdata))
+```
+
+calcualte the mean number of steps per interval :
+
+```{r}
+IntervalMean <-  mean(rawdata$steps,na.rm=TRUE)
+```
+
+
+fill the gap using interval mean  :
+
+```{r}
+rawdata$steps[is.na(rawdata$steps)]<- IntervalMean
+```
+
+plot histogram of the  total number of steps taken each day after the gap filling :
+
+```{r}
+qplot(tot, data=data, geom="histogram")
+dev.copy(png,"figures/plot3.png")
+dev.off()
+
+```
+prepare weekdays factor  :
+
+```{r}
+wd <- data$date
+wd<- strptime(wd, "%Y-%m-%d")
+wd <- weekdays(wd)
+wd <- as.character(wd)
+
+for (i in 1:length(wd)){
+  if(wd[i]=="Saturday" | wd[i]=="Sunday") {
+    wd[i] <- "weekend"
+  } else {
+    wd[i] <- "weekday"
+  }
+}
+wd <- factor(wd)
+```
+plot difference btweeen weekend and weekdays   :
+
+```{r}
+rawdata <- transform(rawdata,wd = factor(wd))
+xyplot(steps ~interval |wd,data=rawdata,type="l", layout =c(1,2))
+dev.copy(png,"figures/plot14.png")
+dev.off()
+
+```

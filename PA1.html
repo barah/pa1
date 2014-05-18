@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Peer Assessment 1</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Peer Assessment 1</h1>
+
+<p>read data</p>
+
+<pre><code class="r">rawdata &lt;- read.csv(&quot;activity/activity.csv&quot;)
+</code></pre>
+
+<p>caculate daily mean :</p>
+
+<pre><code class="r">data &lt;- ddply(rawdata, ~date, summarise, mean = mean(steps), sd = sd(steps), 
+    tot = sum(steps), median = median(steps))
+</code></pre>
+
+<pre><code>## Error: could not find function &quot;ddply&quot;
+</code></pre>
+
+<p>plot histogram of the  total number of steps taken each day and print the data:</p>
+
+<pre><code class="r">qplot(tot, data = data, geom = &quot;histogram&quot;)
+</code></pre>
+
+<pre><code>## Error: could not find function &quot;qplot&quot;
+</code></pre>
+
+<pre><code class="r">dev.copy(png, &quot;figures/plot1.png&quot;)
+</code></pre>
+
+<pre><code>## png 
+##   3
+</code></pre>
+
+<pre><code class="r">dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<pre><code class="r">data
+</code></pre>
+
+<pre><code>## function (..., list = character(), package = NULL, lib.loc = NULL, 
+##     verbose = getOption(&quot;verbose&quot;), envir = .GlobalEnv) 
+## {
+##     fileExt &lt;- function(x) {
+##         db &lt;- grepl(&quot;\\.[^.]+\\.(gz|bz2|xz)$&quot;, x)
+##         ans &lt;- sub(&quot;.*\\.&quot;, &quot;&quot;, x)
+##         ans[db] &lt;- sub(&quot;.*\\.([^.]+\\.)(gz|bz2|xz)$&quot;, &quot;\\1\\2&quot;, 
+##             x[db])
+##         ans
+##     }
+##     names &lt;- c(as.character(substitute(list(...))[-1L]), list)
+##     if (!is.null(package)) {
+##         if (!is.character(package)) 
+##             stop(&quot;&#39;package&#39; must be a character string or NULL&quot;)
+##         if (any(package %in% &quot;base&quot;)) 
+##             warning(&quot;datasets have been moved from package &#39;base&#39; to package &#39;datasets&#39;&quot;)
+##         if (any(package %in% &quot;stats&quot;)) 
+##             warning(&quot;datasets have been moved from package &#39;stats&#39; to package &#39;datasets&#39;&quot;)
+##         package[package %in% c(&quot;base&quot;, &quot;stats&quot;)] &lt;- &quot;datasets&quot;
+##     }
+##     paths &lt;- find.package(package, lib.loc, verbose = verbose)
+##     if (is.null(lib.loc)) 
+##         paths &lt;- c(path.package(package, TRUE), if (!length(package)) getwd(), 
+##             paths)
+##     paths &lt;- unique(paths[file.exists(paths)])
+##     paths &lt;- paths[file_test(&quot;-d&quot;, file.path(paths, &quot;data&quot;))]
+##     dataExts &lt;- tools:::.make_file_exts(&quot;data&quot;)
+##     if (length(names) == 0L) {
+##         db &lt;- matrix(character(), nrow = 0L, ncol = 4L)
+##         for (path in paths) {
+##             entries &lt;- NULL
+##             packageName &lt;- if (file_test(&quot;-f&quot;, file.path(path, 
+##                 &quot;DESCRIPTION&quot;))) 
+##                 basename(path)
+##             else &quot;.&quot;
+##             if (file_test(&quot;-f&quot;, INDEX &lt;- file.path(path, &quot;Meta&quot;, 
+##                 &quot;data.rds&quot;))) {
+##                 entries &lt;- readRDS(INDEX)
+##             }
+##             else {
+##                 dataDir &lt;- file.path(path, &quot;data&quot;)
+##                 entries &lt;- tools::list_files_with_type(dataDir, 
+##                   &quot;data&quot;)
+##                 if (length(entries)) {
+##                   entries &lt;- unique(tools::file_path_sans_ext(basename(entries)))
+##                   entries &lt;- cbind(entries, &quot;&quot;)
+##                 }
+##             }
+##             if (NROW(entries)) {
+##                 if (is.matrix(entries) &amp;&amp; ncol(entries) == 2L) 
+##                   db &lt;- rbind(db, cbind(packageName, dirname(path), 
+##                     entries))
+##                 else warning(gettextf(&quot;data index for package %s is invalid and will be ignored&quot;, 
+##                   sQuote(packageName)), domain = NA, call. = FALSE)
+##             }
+##         }
+##         colnames(db) &lt;- c(&quot;Package&quot;, &quot;LibPath&quot;, &quot;Item&quot;, &quot;Title&quot;)
+##         footer &lt;- if (missing(package)) 
+##             paste0(&quot;Use &quot;, sQuote(paste(&quot;data(package =&quot;, &quot;.packages(all.available = TRUE))&quot;)), 
+##                 &quot;\n&quot;, &quot;to list the data sets in all *available* packages.&quot;)
+##         else NULL
+##         y &lt;- list(title = &quot;Data sets&quot;, header = NULL, results = db, 
+##             footer = footer)
+##         class(y) &lt;- &quot;packageIQR&quot;
+##         return(y)
+##     }
+##     paths &lt;- file.path(paths, &quot;data&quot;)
+##     for (name in names) {
+##         found &lt;- FALSE
+##         for (p in paths) {
+##             if (file_test(&quot;-f&quot;, file.path(p, &quot;Rdata.rds&quot;))) {
+##                 rds &lt;- readRDS(file.path(p, &quot;Rdata.rds&quot;))
+##                 if (name %in% names(rds)) {
+##                   found &lt;- TRUE
+##                   if (verbose) 
+##                     message(sprintf(&quot;name=%s:\t found in Rdata.rds&quot;, 
+##                       name), domain = NA)
+##                   thispkg &lt;- sub(&quot;.*/([^/]*)/data$&quot;, &quot;\\1&quot;, p)
+##                   thispkg &lt;- sub(&quot;_.*$&quot;, &quot;&quot;, thispkg)
+##                   thispkg &lt;- paste0(&quot;package:&quot;, thispkg)
+##                   objs &lt;- rds[[name]]
+##                   lazyLoad(file.path(p, &quot;Rdata&quot;), envir = envir, 
+##                     filter = function(x) x %in% objs)
+##                   break
+##                 }
+##                 else if (verbose) 
+##                   message(sprintf(&quot;name=%s:\t NOT found in names() of Rdata.rds, i.e.,\n\t%s\n&quot;, 
+##                     name, paste(names(rds), collapse = &quot;,&quot;)), 
+##                     domain = NA)
+##             }
+##             if (file_test(&quot;-f&quot;, file.path(p, &quot;Rdata.zip&quot;))) {
+##                 warning(&quot;zipped data found for package &quot;, sQuote(basename(dirname(p))), 
+##                   &quot;.\nThat is defunct, so please re-install the package.&quot;, 
+##                   domain = NA)
+##                 if (file_test(&quot;-f&quot;, fp &lt;- file.path(p, &quot;filelist&quot;))) 
+##                   files &lt;- file.path(p, scan(fp, what = &quot;&quot;, quiet = TRUE))
+##                 else {
+##                   warning(gettextf(&quot;file &#39;filelist&#39; is missing for directory %s&quot;, 
+##                     sQuote(p)), domain = NA)
+##                   next
+##                 }
+##             }
+##             else {
+##                 files &lt;- list.files(p, full.names = TRUE)
+##             }
+##             files &lt;- files[grep(name, files, fixed = TRUE)]
+##             if (length(files) &gt; 1L) {
+##                 o &lt;- match(fileExt(files), dataExts, nomatch = 100L)
+##                 paths0 &lt;- dirname(files)
+##                 paths0 &lt;- factor(paths0, levels = unique(paths0))
+##                 files &lt;- files[order(paths0, o)]
+##             }
+##             if (length(files)) {
+##                 for (file in files) {
+##                   if (verbose) 
+##                     message(&quot;name=&quot;, name, &quot;:\t file= ...&quot;, .Platform$file.sep, 
+##                       basename(file), &quot;::\t&quot;, appendLF = FALSE, 
+##                       domain = NA)
+##                   ext &lt;- fileExt(file)
+##                   if (basename(file) != paste0(name, &quot;.&quot;, ext)) 
+##                     found &lt;- FALSE
+##                   else {
+##                     found &lt;- TRUE
+##                     zfile &lt;- file
+##                     zipname &lt;- file.path(dirname(file), &quot;Rdata.zip&quot;)
+##                     if (file.exists(zipname)) {
+##                       Rdatadir &lt;- tempfile(&quot;Rdata&quot;)
+##                       dir.create(Rdatadir, showWarnings = FALSE)
+##                       topic &lt;- basename(file)
+##                       rc &lt;- .External(C_unzip, zipname, topic, 
+##                         Rdatadir, FALSE, TRUE, FALSE, FALSE)
+##                       if (rc == 0L) 
+##                         zfile &lt;- file.path(Rdatadir, topic)
+##                     }
+##                     if (zfile != file) 
+##                       on.exit(unlink(zfile))
+##                     switch(ext, R = , r = {
+##                       library(&quot;utils&quot;)
+##                       sys.source(zfile, chdir = TRUE, envir = envir)
+##                     }, RData = , rdata = , rda = load(zfile, 
+##                       envir = envir), TXT = , txt = , tab = , 
+##                       tab.gz = , tab.bz2 = , tab.xz = , txt.gz = , 
+##                       txt.bz2 = , txt.xz = assign(name, read.table(zfile, 
+##                         header = TRUE, as.is = FALSE), envir = envir), 
+##                       CSV = , csv = , csv.gz = , csv.bz2 = , 
+##                       csv.xz = assign(name, read.table(zfile, 
+##                         header = TRUE, sep = &quot;;&quot;, as.is = FALSE), 
+##                         envir = envir), found &lt;- FALSE)
+##                   }
+##                   if (found) 
+##                     break
+##                 }
+##                 if (verbose) 
+##                   message(if (!found) 
+##                     &quot;*NOT* &quot;, &quot;found&quot;, domain = NA)
+##             }
+##             if (found) 
+##                 break
+##         }
+##         if (!found) 
+##             warning(gettextf(&quot;data set %s not found&quot;, sQuote(name)), 
+##                 domain = NA)
+##     }
+##     invisible(names)
+## }
+## &lt;bytecode: 0x00000000086981b8&gt;
+## &lt;environment: namespace:utils&gt;
+</code></pre>
+
+<p>average daily activity pattern plot :</p>
+
+<pre><code class="r">xyplot(interval ~ steps, data = rawdata, type = &quot;l&quot;)
+</code></pre>
+
+<pre><code>## Error: could not find function &quot;xyplot&quot;
+</code></pre>
+
+<pre><code class="r">dev.copy(png, &quot;figures/plot2.png&quot;)
+</code></pre>
+
+<pre><code>## png 
+##   3
+</code></pre>
+
+<pre><code class="r">dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<p>calucate the number of missing values :</p>
+
+<pre><code class="r">MissingValues = NROW(rawdata) - NROW(na.omit(rawdata))
+</code></pre>
+
+<p>calcualte the mean number of steps per interval :</p>
+
+<pre><code class="r">IntervalMean &lt;- mean(rawdata$steps, na.rm = TRUE)
+</code></pre>
+
+<p>fill the gap using interval mean  :</p>
+
+<pre><code class="r">rawdata$steps[is.na(rawdata$steps)] &lt;- IntervalMean
+</code></pre>
+
+<p>plot histogram of the  total number of steps taken each day after the gap filling :</p>
+
+<pre><code class="r">qplot(tot, data = data, geom = &quot;histogram&quot;)
+</code></pre>
+
+<pre><code>## Error: could not find function &quot;qplot&quot;
+</code></pre>
+
+<pre><code class="r">dev.copy(png, &quot;figures/plot3.png&quot;)
+</code></pre>
+
+<pre><code>## png 
+##   3
+</code></pre>
+
+<pre><code class="r">dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<p>prepare weekdays factor  :</p>
+
+<pre><code class="r">wd &lt;- data$date
+</code></pre>
+
+<pre><code>## Error: object of type &#39;closure&#39; is not subsettable
+</code></pre>
+
+<pre><code class="r">wd &lt;- strptime(wd, &quot;%Y-%m-%d&quot;)
+</code></pre>
+
+<pre><code>## Error: object &#39;wd&#39; not found
+</code></pre>
+
+<pre><code class="r">wd &lt;- weekdays(wd)
+</code></pre>
+
+<pre><code>## Error: object &#39;wd&#39; not found
+</code></pre>
+
+<pre><code class="r">wd &lt;- as.character(wd)
+</code></pre>
+
+<pre><code>## Error: object &#39;wd&#39; not found
+</code></pre>
+
+<pre><code class="r">
+for (i in 1:length(wd)) {
+    if (wd[i] == &quot;Saturday&quot; | wd[i] == &quot;Sunday&quot;) {
+        wd[i] &lt;- &quot;weekend&quot;
+    } else {
+        wd[i] &lt;- &quot;weekday&quot;
+    }
+}
+</code></pre>
+
+<pre><code>## Error: object &#39;wd&#39; not found
+</code></pre>
+
+<pre><code class="r">wd &lt;- factor(wd)
+</code></pre>
+
+<pre><code>## Error: object &#39;wd&#39; not found
+</code></pre>
+
+<p>plot difference btweeen weekend and weekdays   :</p>
+
+<pre><code class="r">rawdata &lt;- transform(rawdata, wd = factor(wd))
+</code></pre>
+
+<pre><code>## Error: object &#39;wd&#39; not found
+</code></pre>
+
+<pre><code class="r">xyplot(steps ~ interval | wd, data = rawdata, type = &quot;l&quot;, layout = c(1, 2))
+</code></pre>
+
+<pre><code>## Error: could not find function &quot;xyplot&quot;
+</code></pre>
+
+<pre><code class="r">dev.copy(png, &quot;figures/plot14.png&quot;)
+</code></pre>
+
+<pre><code>## png 
+##   3
+</code></pre>
+
+<pre><code class="r">dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+</body>
+
+</html>
+
